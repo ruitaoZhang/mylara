@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('phpInfo', function () {
+    echo phpinfo();
+});
 Route::get('catchPageData', 'FunctionController\CurlController@catchPageData');
 Route::get('testList', 'FunctionController\FunctionController@testList');
 Route::get('testList2', 'FunctionController\FunctionController@testList2');
 Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
-Route::get('/saying', Saying::class);
+Route::get('saveRedisValue', 'RedisController@saveRedisValue');
+Route::get('publishRedis', 'RedisController@publishRedis');
+Route::get('pulishRedisForEvent', 'RedisController@pulishRedisForEvent');
+
+//Route::get('/saying', Saying::class);
 //Route::get('saying', 'TestController@testByeController');
