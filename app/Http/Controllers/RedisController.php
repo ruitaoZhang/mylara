@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redis;
 
 class RedisController extends Controller
 {
+    //测试设置键值，通过自定义command去监听redis失效事件
     public function saveRedisValue()
     {
         $order = '123456';
