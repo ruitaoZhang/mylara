@@ -20,5 +20,7 @@ Route::get('catchPageData', 'FunctionController\CurlController@catchPageData');
 Route::get('testList', 'FunctionController\FunctionController@testList');
 Route::get('testList2', 'FunctionController\FunctionController@testList2');
 Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
-Route::get('/saying', Saying::class);
+Route::get('testSetSession', 'Session\SessionController@testSetSession');
+Route::get('testGetSessionVal', 'Session\SessionController@testGetSessionVal');
+Route::get('testDelSession', 'Session\SessionController@testDelSession');
 //Route::get('saying', 'TestController@testByeController');
