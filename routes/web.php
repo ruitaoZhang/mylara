@@ -24,3 +24,9 @@ Route::get('testSetSession', 'Session\SessionController@testSetSession');
 Route::get('testGetSessionVal', 'Session\SessionController@testGetSessionVal');
 Route::get('testDelSession', 'Session\SessionController@testDelSession');
 //Route::get('saying', 'TestController@testByeController');
+
+//array
+Route::get('testArrayChangeKeyCase', 'FunctionController\ArrayFunctionController@testArrayChangeKeyCase');
+Route::get('testArrayChunk', 'FunctionController\ArrayFunctionController@testArrayChunk');
+Route::get('testArrayColumn', 'FunctionController\ArrayFunctionController@testArrayColumn');
+Route::get('testArrayCombine', 'FunctionController\ArrayFunctionController@testArrayCombine');
