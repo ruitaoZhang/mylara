@@ -30,3 +30,17 @@ Route::get('testArrayChangeKeyCase', 'FunctionController\ArrayFunctionController
 Route::get('testArrayChunk', 'FunctionController\ArrayFunctionController@testArrayChunk');
 Route::get('testArrayColumn', 'FunctionController\ArrayFunctionController@testArrayColumn');
 Route::get('testArrayCombine', 'FunctionController\ArrayFunctionController@testArrayCombine');
+Route::get('testArrayCountValues', 'FunctionController\ArrayFunctionController@testArrayCountValues');
+Route::get('testArrayDiff', 'FunctionController\ArrayFunctionController@testArrayDiff');
+Route::get('testArrayDiffAssoc', 'FunctionController\ArrayFunctionController@testArrayDiffAssoc');
+Route::get('testArrayDiffKey', 'FunctionController\ArrayFunctionController@testArrayDiffKey');
+Route::get('testArrayDiffUassoc', 'FunctionController\ArrayFunctionController@testArrayDiffUassoc');
+Route::get('testArrayDiffUkey', 'FunctionController\ArrayFunctionController@testArrayDiffUkey');
+Route::get('testArrayFill', 'FunctionController\ArrayFunctionController@testArrayFill');
+Route::get('testArrayFillKeys', 'FunctionController\ArrayFunctionController@testArrayFillKeys');
+
+
+
+
+
+Route::get('testExtract', 'FunctionController\OtherFuncController@testExtract');

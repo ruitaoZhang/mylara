@@ -92,5 +92,151 @@ class ArrayFunctionController extends Controller
         $arr = array_combine($index, $value);
 
         print_r($arr);
+        //输出：Array ( [cc] => 嘻嘻 [ll] => 丽丽 [bb] => 宝宝 )
+    }
+    //2019-02-15
+    /**
+     * 对数组中的所有值进行计数
+     * array_count_values(array)
+     */
+    public function testArrayCountValues(){
+        $arr = array('aa', 'bb', 'aa', 'cc');
+
+        print_r(array_count_values($arr));
+        //输出：Array ( [aa] => 2 [bb] => 1 [cc] => 1 )
+    }
+
+    /**
+     * 函数返回两个数组的差集数组。该数组包括了所有在被比较的数组中，但是不在任何其他参数数组中的键值。
+     * 在返回的数组中，键名保持不变。
+     * array_diff(array1,array2,array3...)
+     * array1 => 与其他数组进行比较的第一个数组。
+     * array2 => 与第一个数组进行比较的数组。
+     * array3 => 与第一个数组进行比较的数组。
+     */
+    public function testArrayDiff(){
+        $arr1 = ['aa', 'bb', 'cc', 'dd'];
+        $arr2 = ['bb', 'gg', 'aa', 'ff'];
+        $arr3 = ['cc', 'kk'];
+
+        $result = array_diff($arr1, $arr2);
+        print_r($result);
+        //输出：Array ( [2] => cc [3] => dd )
+
+        $result = array_diff($arr1, $arr2, $arr3);
+        print_r($result);
+        //输出：Array ( [3] => dd )
+
+    }
+    //2019-02-16
+    /**
+     * 函数用于比较两个（或更多个）数组的键名和键值 ，并返回差集
+     * array_diff_assoc(array1,array2,array3...)
+     * array1 => 与其他数组进行比较的第一个数组。
+     * array2 => 与第一个数组进行比较的数组。
+     * array3 => 与第一个数组进行比较的数组。
+     */
+    public function testArrayDiffAssoc(){
+        $a1=array("a"=>"red","b"=>"green","c1"=>"blue","d"=>"yellow");
+        $a2=array("a"=>"red","b2"=>"green","c"=>"blue");
+
+        $result = array_diff_assoc($a1, $a2);
+        print_r($result);
+        //输出：Array ( [b] => green [c1] => blue [d] => yellow )
+
+        $a1=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+        $a2=array("a"=>"red","f"=>"green","g"=>"blue");
+        $a3=array("h"=>"red","b"=>"green","g"=>"blue");
+
+        $result=array_diff_assoc($a1,$a2,$a3);
+        print_r($result);
+        //输出：Array ( [c] => blue [d] => yellow )
+    }
+
+    /**
+     * 比较两个（或更多个）数组的键名 ，并返回差集
+     * array_diff_key(array1,array2,array3...)
+     * array1 => 与其他数组进行比较的第一个数组。
+     * array2 => 与第一个数组进行比较的数组。
+     * array3 => 与第一个数组进行比较的数组。
+     */
+    public function testArrayDiffKey(){
+        $arr1 = ['a' => 'ac', 'b' => 'bc', 'c' => 'cc'];
+        $arr2 = ['b' => 'bc', 'b' => 'bb'];
+        $arr3 = ['a' => 'a3', 'j' => 'jb'];
+
+        $result = array_diff_key($arr1, $arr2);
+        print_r($result);
+        //输出：Array ( [a] => ac [c] => cc )
+
+        $result = array_diff_key($arr1, $arr2, $arr3);
+        print_r($result);
+        //输出：Array ( [c] => cc )
+    }
+    //2019-02-17
+    /**
+     * 比较两个数组的键名和键值（使用用户自定义函数来比较键名），并返回差集
+     * array_diff_uassoc(array1,array2,array3...,myfunction)
+     * array1 => 与其他数组进行比较的第一个数组。
+     * array2 => 与第一个数组进行比较的数组。
+     * array3 => 与第一个数组进行比较的数组。
+     * myfunction => 定义可调用比较函数的字符串
+     */
+    public function testArrayDiffUassoc(){
+        $a1=array("a"=>"red","b"=>"green","c1"=>"blue","d"=>"yellow");
+        $a2=array("a"=>"red","b2"=>"green","c"=>"blue");
+
+        $result = array_diff_uassoc($a1, $a2, function ($a, $b){
+            if ($a === $b)
+            {
+                return 0;
+            }
+            return ($a > $b) ? 1 : -1;
+        });
+        print_r($result);
+        //输出：Array ( [b] => green [c1] => blue [d] => yellow )
+    }
+
+    public function testArrayDiffUkey(){
+        $arr1 = ['a' => 'ac', 'b' => 'bc', 'c' => 'cc'];
+        $arr2 = ['b' => 'bc', 'b' => 'bb'];
+
+        $result = array_diff_ukey($arr1, $arr2, function ($a, $b){
+            if ($a === $b)
+            {
+                return 0;
+            }
+            return ($a > $b) ? 1 : -1;
+        });
+        print_r($result);
+        //输出：Array ( [a] => ac [c] => cc )
+    }
+    //2019-02-18
+    /**
+     * 用键值填充数组
+     * array_fill(index,number,value)
+     * index => 返回数组的第一个索引
+     * number => 规定要插入的元素数
+     * value => 规定供填充数组所使用的值
+     *
+     */
+    public function testArrayFill(){
+        $a1=array_fill(3,5,"blue");
+        print_r($a1);
+        //输出：Array ( [3] => blue [4] => blue [5] => blue [6] => blue [7] => blue )
+    }
+
+    /**
+     * 使用指定的键和值填充数组
+     * array_fill_keys(keys,value)
+     * keys => 使用该数组的值作为键
+     * value => 填充数组所使用的值
+     */
+    public function testArrayFillKeys(){
+        $keys = ['index1', 'index2', 'index3'];
+        $arr = array_fill_keys($keys, 'rt');
+
+        print_r($arr);
+        //输出：Array ( [index1] => rt [index2] => rt [index3] => rt )
     }
 }
