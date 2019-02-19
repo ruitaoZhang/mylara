@@ -239,4 +239,34 @@ class ArrayFunctionController extends Controller
         print_r($arr);
         //输出：Array ( [index1] => rt [index2] => rt [index3] => rt )
     }
+
+    //2019-02-19
+    /**
+     * 用回调函数过滤数组中的元素
+     * array_filter(array,callbackfunction)
+     */
+    public function testArrayFilter(){
+        $a1=array("a","b",2,3,4);
+
+        print_r(array_filter($a1,function ($var){
+//            return($var & 1);
+            return $var > 2;
+        }));
+        //输出：Array ( [3] => 3 [4] => 4 )
+    }
+
+    /**
+     * 函数用于反转/交换数组中所有的键名以及它们关联的键值（需注意重复的值的问题）
+     * array_flip(array)
+     */
+    public function testArrayFlip(){
+        $arr = [
+            'key1' => 'val1',
+            'key2' => 'val2',
+            'key3' => 'val3',
+        ];
+
+        print_r(array_flip($arr));
+        //输出：Array ( [val1] => key1 [val2] => key2 [val3] => key3 )
+    }
 }

@@ -28,5 +28,16 @@ class OtherFuncController extends Controller
         echo "\$name = $name"."<br/>";
         echo "\$age = $age"."<br/>";
         echo "\$gender = $gender";
+
+        //输出：rt
+        //24
+        //男
+        //
+        //输出原键名
+        //$name = rt
+        //$age = 24
+        //$gender = 男
     }
+
+
 }

@@ -38,6 +38,8 @@ Route::get('testArrayDiffUassoc', 'FunctionController\ArrayFunctionController@te
 Route::get('testArrayDiffUkey', 'FunctionController\ArrayFunctionController@testArrayDiffUkey');
 Route::get('testArrayFill', 'FunctionController\ArrayFunctionController@testArrayFill');
 Route::get('testArrayFillKeys', 'FunctionController\ArrayFunctionController@testArrayFillKeys');
+Route::get('testArrayFilter', 'FunctionController\ArrayFunctionController@testArrayFilter');
+Route::get('testArrayFlip', 'FunctionController\ArrayFunctionController@testArrayFlip');
 
 
 
