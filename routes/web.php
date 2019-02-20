@@ -40,6 +40,8 @@ Route::get('testArrayFill', 'FunctionController\ArrayFunctionController@testArra
 Route::get('testArrayFillKeys', 'FunctionController\ArrayFunctionController@testArrayFillKeys');
 Route::get('testArrayFilter', 'FunctionController\ArrayFunctionController@testArrayFilter');
 Route::get('testArrayFlip', 'FunctionController\ArrayFunctionController@testArrayFlip');
+Route::get('testArrayIntersect', 'FunctionController\ArrayFunctionController@testArrayIntersect');
+Route::get('testArrayIntersectAssoc', 'FunctionController\ArrayFunctionController@testArrayIntersectAssoc');
 
 
 

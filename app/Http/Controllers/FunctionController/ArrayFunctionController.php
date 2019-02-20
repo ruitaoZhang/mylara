@@ -269,4 +269,44 @@ class ArrayFunctionController extends Controller
         print_r(array_flip($arr));
         //输出：Array ( [val1] => key1 [val2] => key2 [val3] => key3 )
     }
+
+    //2019-02-20
+    /**
+     * 比较两个数组的键值，并返回交集
+     * array_intersect(array1,array2,array3...)
+     * 返回在array1、array2、array3中共同存在键值，键名保留不变
+     */
+    public function testArrayIntersect(){
+        $arr1 = ['a' => 'av', 'b1' => 'bv', 'c' => 'cv'];
+        $arr2 = ['a' => 'av', 'b2' => 'bv', 'c' => 'cv2'];
+        $arr3 = ['a' => 'cv', 'b3' => 'bv', 'c' => 'cv'];
+
+        $result = array_intersect($arr1, $arr2);
+        print_r($result);
+        //输出：Array ( [a] => av [b1] => bv )
+
+        $result = array_intersect($arr1, $arr2, $arr3);
+        print_r($result);
+        //输出：Array ( [b1] => bv )
+
+    }
+
+    /**
+     * 比较两个数组的键名和键值，并返回交集
+     * array_intersect_assoc(array1,array2,array3...)
+     * 
+     */
+    public function testArrayIntersectAssoc(){
+        $arr1 = array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+        $arr2 = array("a"=>"red","b"=>"green","c"=>"blue");
+        $arr3 = array("a"=>"red","b"=>"green","c"=>"blue1");
+
+        $result = array_intersect_assoc($arr1, $arr2);
+        print_r($result);
+        //输出：Array ( [a] => red [b] => green [c] => blue )
+
+        $result = array_intersect_assoc($arr1, $arr2, $arr3);
+        print_r($result);
+        //输出：Array ( [a] => red [b] => green )
+    }
 }
