@@ -309,4 +309,35 @@ class ArrayFunctionController extends Controller
         print_r($result);
         //输出：Array ( [a] => red [b] => green )
     }
+
+    //2019-02-21
+    /**
+     * 检查某个数组中是否存在指定的键名
+     * array_key_exists(key,array)
+     */
+    public function testArrayKeyExists(){
+        $arr = ['a' => 'av', 'b' => 'bv'];
+
+        echo 'the key is b';
+        if (array_key_exists('b', $arr)){
+            echo "键存在";
+        }else{
+            echo "键不存在";
+        }
+        //输出：the key is b 键存在
+    }
+
+    public function testArrayKeys(){
+        $arr = [
+            'red' => '#ccsd',
+            'white' => '#xxxc',
+            'yellow' => '#fsee',
+        ];
+
+        $result = array_keys($arr);
+        print_r($result);
+        //输出：Array ( [0] => red [1] => white [2] => yellow )
+    }
+
+    
 }

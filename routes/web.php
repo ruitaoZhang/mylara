@@ -42,6 +42,8 @@ Route::get('testArrayFilter', 'FunctionController\ArrayFunctionController@testAr
 Route::get('testArrayFlip', 'FunctionController\ArrayFunctionController@testArrayFlip');
 Route::get('testArrayIntersect', 'FunctionController\ArrayFunctionController@testArrayIntersect');
 Route::get('testArrayIntersectAssoc', 'FunctionController\ArrayFunctionController@testArrayIntersectAssoc');
+Route::get('testArrayKeyExists', 'FunctionController\ArrayFunctionController@testArrayKeyExists');
+Route::get('testArrayKeys', 'FunctionController\ArrayFunctionController@testArrayKeys');
 
 
 
