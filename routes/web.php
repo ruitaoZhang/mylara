@@ -44,6 +44,10 @@ Route::get('testArrayIntersect', 'FunctionController\ArrayFunctionController@tes
 Route::get('testArrayIntersectAssoc', 'FunctionController\ArrayFunctionController@testArrayIntersectAssoc');
 Route::get('testArrayKeyExists', 'FunctionController\ArrayFunctionController@testArrayKeyExists');
 Route::get('testArrayKeys', 'FunctionController\ArrayFunctionController@testArrayKeys');
+Route::get('testArrayMap', 'FunctionController\ArrayFunctionController@testArrayMap');
+Route::get('testArrayMerge', 'FunctionController\ArrayFunctionController@testArrayMerge');
+Route::get('testArrayMergeRecursive', 'FunctionController\ArrayFunctionController@testArrayMergeRecursive');
+Route::get('testArrayMultisort', 'FunctionController\ArrayFunctionController@testArrayMultisort');
 
 
 

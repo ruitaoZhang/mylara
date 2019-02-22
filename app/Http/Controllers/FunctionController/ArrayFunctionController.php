@@ -339,5 +339,92 @@ class ArrayFunctionController extends Controller
         //输出：Array ( [0] => red [1] => white [2] => yellow )
     }
 
+    //2019-02-22
+    /**
+     * 使用自定义函数，生成带有新值的数组
+     * 回调函数接受的参数数目应该和传递给 array_map() 函数的数组数目一致
+     * array_map(myfunction,array1,array2,array3...)
+     *
+     */
+    public function testArrayMap(){
+        $arrs = [
+            "key1" => "value1",
+            "key2" => "value2",
+            "value3",
+            "value5",
+        ];
+
+        $result = array_map(function ($arr){
+            //此时的 $arr 是数组中的值
+            return $arr."--";
+        }, $arrs);
+        print_r($result);
+        //输出：Array ( [key1] => value1-- [key2] => value2-- [0] => value3-- [1] => value5-- )
+
+        $result = array_map(function ($arr){
+            //将数组中值的所有字母改为大写
+            return strtoupper($arr);
+        }, $arrs);
+
+        print_r($result);
+        //输出：Array ( [key1] => VALUE1 [key2] => VALUE2 [0] => VALUE3 [1] => VALUE5 )
+    }
+
+    /**
+     * 函数把一个或多个数组合并为一个数组
+     *
+     */
+    public function testArrayMerge(){
+        $arr1 = ['a' => 'aa', 'b' => 'bb'];
+        $arr2 = ['a' => 'vv', 'b' => 'bb'];
+
+        $result = array_merge($arr1, $arr2);
+        print_r($result);
+        //如果出现相同的键，后一个的值覆盖前一个
+        //输出：Array ( [a] => vv [b] => bb )
+
+        print_r($arr1 + $arr2);
+        //使用 + ：如果出现相同的键，只保留前一个值
+        //输出： Array ( [a] => aa [b] => bb )
+
+        $a=array(3=>"red",4=>"green");
+        print_r(array_merge($a));
+        //当只传入一个数组，且键名是整数，则该函数将返回带有整数键名的新数组，其键名以 0 开始进行重新索引
+        //输出： Array ( [0] => red [1] => green )
+
+    }
+
+    /**
+     * 函数把一个或多个数组合并为一个数组
+     * 该函数与 array_merge() 函数的区别在于处理两个或更多个数组元素有相同的键名时。
+     * array_merge_recursive() 不会进行键名覆盖，而是将多个相同键名的值递归组成一个数组。
+     */
+    public function testArrayMergeRecursive(){
+        $a1=array("a"=>"red","b"=>"green");
+        $a2=array("c"=>"blue","b"=>"yellow");
+
+        print_r(array_merge_recursive($a1,$a2));
+        //输出：Array ( [a] => red [b] => Array ( [0] => green [1] => yellow ) [c] => blue )
+
+    }
+
+    /**
+     * 函数返回排序数组
+     * 注释：字符串键名将被保留，但是数字键名将被重新索引，从 0 开始，并以 1 递增
+     * 如果两个或多个值相同，则按在原来数组的顺序排列
+     */
+    public function testArrayMultisort(){
+        $a=array("Dog","Cat","Horse","Bear","Zebra");
+        array_multisort($a);
+
+        print_r($a);
+        //输出：Array ( [0] => Bear [1] => Cat [2] => Dog [3] => Horse [4] => Zebra )
+
+        $a=array("c2" => "Dog", "c" => "Dog", 9 => "Cat","Horse","Bear","Zebra");
+        array_multisort($a, SORT_DESC, SORT_NATURAL);
+
+        print_r($a);
+        //输出： Array ( [0] => Bear [1] => Cat [c2] => Dog [c] => Dog [2] => Horse [3] => Zebra )
+    }
     
 }
