@@ -327,6 +327,9 @@ class ArrayFunctionController extends Controller
         //输出：the key is b 键存在
     }
 
+    /**
+     * 返回包含数组中所有键名的一个新数组
+     */
     public function testArrayKeys(){
         $arr = [
             'red' => '#ccsd',
@@ -339,5 +342,167 @@ class ArrayFunctionController extends Controller
         //输出：Array ( [0] => red [1] => white [2] => yellow )
     }
 
+    //2019-02-22
+    /**
+     * 使用自定义函数，生成带有新值的数组
+     * 回调函数接受的参数数目应该和传递给 array_map() 函数的数组数目一致
+     * array_map(myfunction,array1,array2,array3...)
+     *
+     */
+    public function testArrayMap(){
+        $arrs = [
+            "key1" => "value1",
+            "key2" => "value2",
+            "value3",
+            "value5",
+        ];
 
+        $result = array_map(function ($arr){
+            //此时的 $arr 是数组中的值
+            return $arr."--";
+        }, $arrs);
+        print_r($result);
+        //输出：Array ( [key1] => value1-- [key2] => value2-- [0] => value3-- [1] => value5-- )
+
+        $result = array_map(function ($arr){
+            //将数组中值的所有字母改为大写
+            return strtoupper($arr);
+        }, $arrs);
+
+        print_r($result);
+        //输出：Array ( [key1] => VALUE1 [key2] => VALUE2 [0] => VALUE3 [1] => VALUE5 )
+    }
+
+    /**
+     * 函数把一个或多个数组合并为一个数组
+     *
+     */
+    public function testArrayMerge(){
+        $arr1 = ['a' => 'aa', 'b' => 'bb'];
+        $arr2 = ['a' => 'vv', 'b' => 'bb'];
+
+        $result = array_merge($arr1, $arr2);
+        print_r($result);
+        //如果出现相同的键，后一个的值覆盖前一个
+        //输出：Array ( [a] => vv [b] => bb )
+
+        print_r($arr1 + $arr2);
+        //使用 + ：如果出现相同的键，只保留前一个值
+        //输出： Array ( [a] => aa [b] => bb )
+
+        $a=array(3=>"red",4=>"green");
+        print_r(array_merge($a));
+        //当只传入一个数组，且键名是整数，则该函数将返回带有整数键名的新数组，其键名以 0 开始进行重新索引
+        //输出： Array ( [0] => red [1] => green )
+
+    }
+
+    /**
+     * 函数把一个或多个数组合并为一个数组
+     * 该函数与 array_merge() 函数的区别在于处理两个或更多个数组元素有相同的键名时。
+     * array_merge_recursive() 不会进行键名覆盖，而是将多个相同键名的值递归组成一个数组。
+     */
+    public function testArrayMergeRecursive(){
+        $a1=array("a"=>"red","b"=>"green");
+        $a2=array("c"=>"blue","b"=>"yellow");
+
+        print_r(array_merge_recursive($a1,$a2));
+        //输出：Array ( [a] => red [b] => Array ( [0] => green [1] => yellow ) [c] => blue )
+
+    }
+
+    /**
+     * array_multisort()
+     * 函数返回排序数组
+     * 注释：字符串键名将被保留，但是数字键名将被重新索引，从 0 开始，并以 1 递增
+     * 如果两个或多个值相同，则按在原来数组的顺序排列
+     */
+    public function testArrayMultisort(){
+        $a=array("Dog","Cat","Horse","Bear","Zebra");
+        array_multisort($a);
+
+        print_r($a);
+        //输出：Array ( [0] => Bear [1] => Cat [2] => Dog [3] => Horse [4] => Zebra )
+
+        $a=array("c2" => "Dog", "c" => "Dog", 9 => "Cat","Horse","Bear","Zebra");
+        array_multisort($a, SORT_DESC, SORT_NATURAL);
+
+        print_r($a);
+        //输出： Array ( [0] => Bear [1] => Cat [c2] => Dog [c] => Dog [2] => Horse [3] => Zebra )
+    }
+
+    //2019-02-25
+
+    /**
+     * array_pad()
+     * 函数将指定数量的带有指定值的元素插入到数组中
+     * 提示：如果您将 size 参数设置为负数，该函数会在原始数组之前插入新的元素
+     * 注释：如果 size 参数小于原始数组的长度，该函数不会删除任何元素
+     */
+    public function testArrayPad(){
+        $a=array("red", "green");
+        print_r(array_pad($a,5,"blue"));
+        //输出：Array ( [0] => red [1] => green [2] => blue [3] => blue [4] => blue )
+
+        $a=array("red", "green");
+        print_r(array_pad($a,-5,"blue"));
+        //输出： Array ( [0] => blue [1] => blue [2] => blue [3] => red [4] => green )
+    }
+
+    /**
+     * array_pop()
+     * 删除数组中的最后一个元素-出栈
+     */
+    public function testArrayPop(){
+        $a=array("red", "green", "yellow");
+        array_pop($a);
+        print_r($a);
+        //输出：Array ( [0] => red [1] => green )
+
+    }
+
+    /**
+     * array_product()
+     * 计算并返回数组的乘积
+     */
+    public function testArrayProduct(){
+        $arr = [4, 4];
+        print_r(array_product($arr));
+        //输出：16
+
+        $arr = [];
+        print_r(array_product($arr));
+        //输出：1
+
+        $arr = [4, 4, 10];
+        print_r(array_product($arr));
+        //输出：160
+    }
+
+    /**
+     * array_push($arr, "blue", 'pink')
+     * 向第一个参数的数组尾部添加一个或多个元素（入栈），然后返回新数组的长度
+     */
+    public function testArrayPust(){
+        $arr = ['red', 'white'];
+        array_push($arr, "blue", 'pink');
+        print_r($arr);
+        //输出：Array ( [0] => red [1] => white [2] => blue [3] => pink )
+    }
+
+    /**
+     * array_rand()
+     * 函数返回数组中的随机键名，或者如果您规定函数返回不只一个键名，则返回包含随机键名的数组
+     */
+    public function testArrayRand(){
+        $a=array("red","green","blue","yellow","brown");
+        $random_keys=array_rand($a,3);
+        echo $a[$random_keys[0]]."<br>";
+        echo $a[$random_keys[1]]."<br>";
+        echo $a[$random_keys[2]];
+        //输出：red
+        //green
+        //brown
+    }
+    
 }
