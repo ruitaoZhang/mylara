@@ -339,5 +339,5 @@ class ArrayFunctionController extends Controller
         //输出：Array ( [0] => red [1] => white [2] => yellow )
     }
 
-    
+
 }
