@@ -53,6 +53,8 @@ Route::get('testArrayPop', 'FunctionController\ArrayFunctionController@testArray
 Route::get('testArrayProduct', 'FunctionController\ArrayFunctionController@testArrayProduct');
 Route::get('testArrayPust', 'FunctionController\ArrayFunctionController@testArrayPust');
 Route::get('testArrayRand', 'FunctionController\ArrayFunctionController@testArrayRand');
+Route::get('testArrayReduce', 'FunctionController\ArrayFunctionController@testArrayReduce');
+Route::get('testArrayReplace', 'FunctionController\ArrayFunctionController@testArrayReplace');
 
 
 

@@ -504,5 +504,63 @@ class ArrayFunctionController extends Controller
         //green
         //brown
     }
-    
+
+    //2019-02-26
+
+    /**
+     * array_reduce(array,myfunction,initial)
+     * array_reduce() 函数向用户自定义函数发送数组中的值，并返回一个字符串
+     * 注释：如果数组是空的且未传递 initial 参数，该函数返回 NULL。
+     */
+    public function testArrayReduce(){
+        $arr = ['red', 'white', 'blue'];
+
+        $result = array_reduce($arr, function ($val, $va2){
+            return $val.'-'.$va2;
+        });
+        print_r($result);
+        //输出：-red-white-blue
+
+        $result = array_reduce($arr, function ($val, $va2){
+            return $val.'-'.$va2;
+        }, 5);
+        print_r($result);
+        //输出：5-red-white-blue
+    }
+
+    /**
+     * array_replace() 函数使用后面数组的值替换第一个数组的值
+     *
+     */
+    public function testArrayReplace(){
+        $a1=array("red","green");
+        $a2=array("blue","yellow");
+        print_r(array_replace($a1,$a2));
+        //输出：Array ( [0] => blue [1] => yellow )
+
+        //如果一个键存在于 array1 中同时也存在于 array2 中，第一个数组的值将被第二个数组中的值替换
+        $a1=array("a"=>"red","b"=>"green");
+        $a2=array("a"=>"orange","burgundy");
+        print_r(array_replace($a1,$a2));
+        //输出：Array ( [a] => orange [b] => green [0] => burgundy )
+
+        //如果一个键仅存在于第二个数组中
+        $a1=array("a"=>"red","green");
+        $a2=array("a"=>"orange","b"=>"burgundy");
+        print_r(array_replace($a1,$a2));
+        //Array ( [a] => orange [0] => green [b] => burgundy )
+
+        //使用三个数组 - 最后一个数组（$a3）会覆盖之前的数组（$a1 和 $a2）
+        $a1=array("red","green");
+        $a2=array("blue","yellow");
+        $a3=array("orange","burgundy");
+        print_r(array_replace($a1,$a2,$a3));
+        //输出：Array ( [0] => orange [1] => burgundy )
+
+        //使用数值键 - 如果一个键存在于第二个数组中单不在第一个数组中
+        $a1=array("red","green","blue","yellow");
+        $a2=array(0=>"orange",3=>"burgundy");
+        print_r(array_replace($a1,$a2));
+        //输出 Array ( [0] => orange [1] => green [2] => blue [3] => burgundy )
+    }
 }
