@@ -55,6 +55,8 @@ Route::get('testArrayPust', 'FunctionController\ArrayFunctionController@testArra
 Route::get('testArrayRand', 'FunctionController\ArrayFunctionController@testArrayRand');
 Route::get('testArrayReduce', 'FunctionController\ArrayFunctionController@testArrayReduce');
 Route::get('testArrayReplace', 'FunctionController\ArrayFunctionController@testArrayReplace');
+Route::get('testArrayReplaceRecursive', 'FunctionController\ArrayFunctionController@testArrayReplaceRecursive');
+Route::get('testArrayReverse', 'FunctionController\ArrayFunctionController@testArrayReverse');
 
 
 

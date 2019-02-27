@@ -563,4 +563,36 @@ class ArrayFunctionController extends Controller
         print_r(array_replace($a1,$a2));
         //输出 Array ( [0] => orange [1] => green [2] => blue [3] => burgundy )
     }
+
+    /**
+     * array_replace_recursive() 函数递归地使用后面数组的值替换第一个数组的值
+     */
+    public function testArrayReplaceRecursive(){
+        $a1=array("a"=>array("red"),"b"=>array("green","blue"),);
+        $a2=array("a"=>array("yellow"),"b"=>array("black"));
+        print_r(array_replace_recursive($a1,$a2));
+        //输出：Array ( [a] => Array ( [0] => yellow ) [b] => Array ( [0] => black [1] => blue ) )
+
+        //array_replace() 与 array_replace_recursive() 的差别
+        $a1=array("a"=>array("red"),"b"=>array("green","blue"),);
+        $a2=array("a"=>array("yellow"),"b"=>array("black"));
+
+        $result=array_replace_recursive($a1,$a2);
+        print_r($result);
+        //Array ( [a] => Array ( [0] => yellow ) [b] => Array ( [0] => black [1] => blue ) )
+        $result=array_replace($a1,$a2);
+        print_r($result);
+        // Array ( [a] => Array ( [0] => yellow ) [b] => Array ( [0] => black ) )
+    }
+
+    /**
+     * array_reverse() 函数将原数组中的元素顺序翻转，创建新的数组并返回。
+     * 如果第二个参数指定为 true，则元素的键名保持不变，否则键名将丢失。
+     */
+    public function testArrayReverse(){
+        $a=array("a"=>"Volvo","b"=>"BMW","c"=>"Toyota");
+        print_r(array_reverse($a, false));
+        print_r($a);
+        //输出：Array ( [c] => Toyota [b] => BMW [a] => Volvo )
+    }
 }
