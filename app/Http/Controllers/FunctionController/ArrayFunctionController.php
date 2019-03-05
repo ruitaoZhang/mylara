@@ -595,4 +595,159 @@ class ArrayFunctionController extends Controller
         print_r($a);
         //输出：Array ( [c] => Toyota [b] => BMW [a] => Volvo )
     }
+
+    /**
+     * array_search() 函数在数组中搜索某个键值，并返回对应的键名
+     */
+    public function testArraySearch(){
+        $a=array("a"=>"red","b"=>"green","c"=>"blue");
+        echo array_search("red",$a);
+        //输出：a
+
+    }
+
+    /**
+     * array_shift() 函数删除数组中第一个元素，并返回被删除元素的值
+     */
+    public function testArrayShift(){
+        $a=array("a"=>"red","b"=>"green","c"=>"blue");
+        echo array_shift($a);
+        print_r ($a);
+        //输出：red Array ( [b] => green [c] => blue )
+
+    }
+
+    /**
+     * array_slice(array,start,length,preserve)
+     * 在数组中根据条件取出一段值，并返回
+     *
+     */
+    public function testArraySlice(){
+        $a=array("red","green","blue","yellow","brown");
+        print_r(array_slice($a,2));
+        //输出：Array ( [0] => blue [1] => yellow [2] => brown )
+        $a=array("red","green","blue","yellow","brown");
+        print_r(array_slice($a,1,2));
+        //输出： Array ( [0] => green [1] => blue )
+
+    }
+
+    /**
+     * array_splice(array,start,length,array)
+     * array_splice() 函数从数组中移除选定的元素，并用新元素取代它。该函数也将返回包含被移除元素的数组
+     */
+    public function testArraySplice(){
+        $a1=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+        $a2=array("a"=>"purple","b"=>"orange");
+        array_splice($a1,0,2,$a2);
+        print_r($a1);
+        //输出：Array ( [0] => purple [1] => orange [c] => blue [d] => yellow )
+
+        $a1=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+        $a2=array("a"=>"purple","b"=>"orange");
+        print_r(array_splice($a1,0,2,$a2));
+        //输出：Array ( [a] => red [b] => green )
+
+        $a1=array("0"=>"red","1"=>"green");
+        $a2=array("0"=>"purple","1"=>"orange");
+        array_splice($a1,1,0,$a2);
+        print_r($a1);
+        //输出：Array ( [0] => red [1] => purple [2] => orange [3] => green )
+
+    }
+
+    /**
+     * array_sum() 函数返回数组中所有值的和
+     * 如果所有值都是整数，则返回一个整数值。如果其中有一个或多个值是浮点数，则返回浮点数。
+     */
+    public function testArraySum(){
+        $a=array(5,15,25);
+        echo array_sum($a);
+        //输出：45
+
+        $a=array("a"=>52.2,"b"=>13.7,"c"=>0.9);
+        echo array_sum($a);
+        //输出：66.8
+
+    }
+
+    //2019-03-05
+
+    /**
+     * array_unique(array)
+     * 函数移除数组中的重复的值，并返回结果数组，当出现重复的值只保留第一个
+     */
+    public function testArrayUnique(){
+        $a=array("a"=>"red","b"=>"green","c"=>"red");
+        print_r(array_unique($a));
+        //输出：Array ( [a] => red [b] => green )
+    }
+
+    /**
+     * array_unshift(array,value1,value2,value3...)
+     * 函数用于向数组插入新元素。新数组的值将被插入到数组的开头
+     *
+     */
+    public function testArrayUnshift(){
+        $a=array("a"=>"red","b"=>"green");
+        array_unshift($a,"blue");
+        print_r($a);
+        //输出：Array ( [0] => blue [a] => red [b] => green )
+
+        $a=array("a"=>"red","b"=>"green");
+        print_r(array_unshift($a,"blue"));
+        //输出：3
+
+        $a=array(0=>"red",1=>"green");
+        array_unshift($a,"blue");
+        print_r($a);
+        //输出：Array ( [0] => blue [1] => red [2] => green )
+    }
+
+    /**
+     * array_values() 函数返回一个包含给定数组中所有键值的数组，但不保留键名
+     */
+    public function testArrayValues(){
+        $a=array("Name"=>"Bill","Age"=>"60","Country"=>"USA");
+        print_r(array_values($a));
+        //输出：Array ( [0] => Bill [1] => 60 [2] => USA )
+
+    }
+
+    /**
+     * array_walk(array,myfunction,userdata...)
+     * array_walk() 函数对数组中的每个元素应用用户自定义函数。在函数中，数组的键名和键值是参数
+     *
+     */
+    public function testArrayWalk(){
+
+        $a=array("a"=>"red","b"=>"green","c"=>"blue");
+        array_walk($a, function($value,$key)
+        {
+            echo "The key $key has the value $value<br>";
+        });
+        //输出：
+        //The key a has the value red
+        //The key b has the value green
+        //The key c has the value blue
+
+        $a=array("a"=>"red","b"=>"green","c"=>"blue");
+        array_walk($a,function($value,$key,$p){
+            echo "$key $p $value<br>";
+        },"has the value");
+        //输出：
+        //a has the value red
+        //b has the value green
+        //c has the value blue
+
+        //通过引用改变数组内容
+        $a=array("a"=>"red","b"=>"green","c"=>"blue");
+        array_walk($a,function(&$value,$key){
+            $value="yellow";
+        });
+        print_r($a);
+        //输出：Array ( [a] => yellow [b] => yellow [c] => yellow )
+    }
+
+    
 }

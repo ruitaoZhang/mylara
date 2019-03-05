@@ -57,6 +57,15 @@ Route::get('testArrayReduce', 'FunctionController\ArrayFunctionController@testAr
 Route::get('testArrayReplace', 'FunctionController\ArrayFunctionController@testArrayReplace');
 Route::get('testArrayReplaceRecursive', 'FunctionController\ArrayFunctionController@testArrayReplaceRecursive');
 Route::get('testArrayReverse', 'FunctionController\ArrayFunctionController@testArrayReverse');
+Route::get('testArraySearch', 'FunctionController\ArrayFunctionController@testArraySearch');
+Route::get('testArrayShift', 'FunctionController\ArrayFunctionController@testArrayShift');
+Route::get('testArraySlice', 'FunctionController\ArrayFunctionController@testArraySlice');
+Route::get('testArraySplice', 'FunctionController\ArrayFunctionController@testArraySplice');
+Route::get('testArraySum', 'FunctionController\ArrayFunctionController@testArraySum');
+Route::get('testArrayUnique', 'FunctionController\ArrayFunctionController@testArrayUnique');
+Route::get('testArrayUnshift', 'FunctionController\ArrayFunctionController@testArrayUnshift');
+Route::get('testArrayValues', 'FunctionController\ArrayFunctionController@testArrayValues');
+Route::get('testArrayWalk', 'FunctionController\ArrayFunctionController@testArrayWalk');
 
 
 
