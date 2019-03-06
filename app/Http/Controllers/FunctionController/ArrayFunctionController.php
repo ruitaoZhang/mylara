@@ -749,5 +749,84 @@ class ArrayFunctionController extends Controller
         //输出：Array ( [a] => yellow [b] => yellow [c] => yellow )
     }
 
-    
+    //2019-03-06
+
+    /**
+     * array_walk_recursive() 函数对数组中的每个元素应用用户自定义函数。在函数中，数组的键名和键值是参数
+     * 该函数与 array_walk() 函数的不同在于可以操作更深的数组（一个数组中包含另一个数组）
+     */
+    public function testArrayWalkRecursive(){
+
+        $a1=array("a"=>"red","b"=>"green");
+        $a2=array($a1,"1"=>"blue","2"=>"yellow");
+        array_walk_recursive($a2,function($value,$key){
+            echo "键 $key 的值是 $value 。<br>";
+        });
+        //输出：键 a 的值是 red 。
+        //键 b 的值是 green 。
+        //键 1 的值是 blue 。
+        //键 2 的值是 yellow 。
+    }
+
+    /**
+     * arsort(array,sortingtype);
+     * 对关联数组按照键值进行降序排序。
+     * 提示：请使用 asort() 函数对关联数组按照键值进行升序排序。
+     * 提示：请使用 krsort() 函数对关联数组按照键名进行降序排序。
+     */
+    public function testArrayArsort(){
+        $age=array("Bill"=>"60","Steve"=>"6","Mark"=>"31");
+        arsort($age);
+        print_r($age);
+        //输出：Array ( [Bill] => 60 [Mark] => 31 [Steve] => 6 )
+    }
+
+    /**
+     * asort(array,sortingtype);
+     * asort() 函数对关联数组按照键值进行升序排序
+     */
+    public function testArrayAsort(){
+        $age=array("Bill"=>"60","Steve"=>"56","Mark"=>"31");
+        asort($age);
+        print_r($age);
+        //输出：Array ( [Mark] => 31 [Steve] => 56 [Bill] => 60 )
+    }
+
+    /**
+     * krsort() 函数对关联数组按照键名进行降序排序
+     */
+    public function testArrayKrsort(){
+        $age=array("Bill"=>"60","Steve"=>"56","Mark"=>"31");
+        krsort($age);
+        print_r($age);
+    }
+
+    /**
+     * compact(var1,var2...)
+     * 函数创建包含变量名和它们的值的数组
+     * 注释：任何没有变量名与之对应的字符串都被略过。
+     */
+    public function testCompact(){
+        $firstname = "Bill";
+        $lastname = "Gates";
+        $age = "60";
+
+        $result = compact("firstname", "lastname", "age");
+
+        print_r($result);
+        //输出：Array ( [firstname] => Bill [lastname] => Gates [age] => 60 )
+
+        $firstname = "Bill";
+        $lastname = "Gates";
+        $age = "60";
+
+        $name = array("firstname", "lastname");
+        $result = compact($name, "location", "age");
+
+        print_r($result);
+        //输出：Array ( [firstname] => Bill [lastname] => Gates [age] => 60 )
+
+    }
+
+
 }

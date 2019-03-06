@@ -66,6 +66,11 @@ Route::get('testArrayUnique', 'FunctionController\ArrayFunctionController@testAr
 Route::get('testArrayUnshift', 'FunctionController\ArrayFunctionController@testArrayUnshift');
 Route::get('testArrayValues', 'FunctionController\ArrayFunctionController@testArrayValues');
 Route::get('testArrayWalk', 'FunctionController\ArrayFunctionController@testArrayWalk');
+Route::get('testArrayWalkRecursive', 'FunctionController\ArrayFunctionController@testArrayWalkRecursive');
+Route::get('testArrayArsort', 'FunctionController\ArrayFunctionController@testArrayArsort');
+Route::get('testArrayAsort', 'FunctionController\ArrayFunctionController@testArrayAsort');
+Route::get('testArrayKrsort', 'FunctionController\ArrayFunctionController@testArrayKrsort');
+Route::get('testCompact', 'FunctionController\ArrayFunctionController@testCompact');
 
 
 
