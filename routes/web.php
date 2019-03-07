@@ -71,9 +71,14 @@ Route::get('testArrayArsort', 'FunctionController\ArrayFunctionController@testAr
 Route::get('testArrayAsort', 'FunctionController\ArrayFunctionController@testArrayAsort');
 Route::get('testArrayKrsort', 'FunctionController\ArrayFunctionController@testArrayKrsort');
 Route::get('testCompact', 'FunctionController\ArrayFunctionController@testCompact');
+Route::get('testCount', 'FunctionController\ArrayFunctionController@testCount');
+Route::get('testCurrent', 'FunctionController\ArrayFunctionController@testCurrent');
+Route::get('testExtract', 'FunctionController\ArrayFunctionController@testExtract');
+Route::get('testInarray', 'FunctionController\ArrayFunctionController@testInarray');
+Route::get('testKey', 'FunctionController\ArrayFunctionController@testKey');
 
 
 
 
 
-Route::get('testExtract', 'FunctionController\OtherFuncController@testExtract');
+//Route::get('testExtract', 'FunctionController\OtherFuncController@testExtract');

@@ -828,5 +828,161 @@ class ArrayFunctionController extends Controller
 
     }
 
+    //2019-03-07
+
+    /**
+     * count(array,mode);
+     * 返回数组中元素的数目。
+     * mode：0 - 默认。不对多维数组中的所有元素进行计数
+     *       1 - 递归地计数数组中元素的数目（计算多维数组中的所有元素）
+     */
+    public function testCount(){
+        $cars=array("Volvo","BMW","Toyota");
+        echo count($cars);
+        //输出：3
+
+        $cars=array
+        (
+            "Volvo"=>array
+            (
+                "XC60",
+                "XC90"
+            ),
+            "BMW"=>array
+            (
+                "X3",
+                "X5"
+            ),
+            "Toyota"=>array
+            (
+                "Highlander"
+            )
+        );
+
+        echo "常规计数：" . count($cars)."<br>";
+        echo "递归计数：" . count($cars,1);
+        //输出：常规计数：3
+        //递归计数：8
+    }
+
+    /**
+     * current(array)
+     * 返回数组中的当前元素的值
+     * 每个数组中都有一个内部的指针指向它的"当前"元素，初始指向插入到数组中的第一个元素
+     * 如果内部指针指向超出了单元列表的末端，current() 返回 FALSE。
+     * 提示：该函数不会移动数组内部指针。要做到这一点，请使用 next() 和 prev() 函数。
+        相关的方法：
+        end() - 将内部指针指向数组中的最后一个元素，并输出
+        next() - 将内部指针指向数组中的下一个元素，并输出
+        prev() - 将内部指针指向数组中的上一个元素，并输出
+        reset() - 将内部指针指向数组中的第一个元素，并输出
+        each() - 返回当前元素的键名和键值，并将内部指针向前移动
+     */
+    public function testCurrent(){
+        $people = array("Bill", "Steve", "Mark", "David");
+        echo current($people) . "<br>";
+        //输出：Bill
+
+        $people = array("Bill", "Steve", "Mark", "David");
+
+        echo current($people) . "<br>"; // 当前元素是 Bill
+        echo next($people) . "<br>"; // Bill 的下一个元素是 Steve
+        echo current($people) . "<br>"; // 现在当前元素是 Steve
+        echo prev($people) . "<br>"; // Steve 的上一个元素是 Bill
+        echo end($people) . "<br>"; // 最后一个元素是 David
+        echo prev($people) . "<br>"; // David 之前的元素是 Mark
+        echo current($people) . "<br>"; // 目前的当前元素是 Mark
+        echo reset($people) . "<br>"; // 把内部指针移动到数组的首个元素，即 Bill
+        echo next($people) . "<br>"; // Bill 的下一个元素是 Steve
+
+//        print_r (each($people)); // 返回当前元素的键名和键值（目前是 Steve），并向前移动内部指针
+
+    }
+
+    /**
+     * extract(array,extract_rules,prefix)
+     * 从数组中将变量导入到当前的符号表
+     */
+    public function testExtract(){
+        $a = "Original";
+        $my_array = array("a" => "Cat","b" => "Dog", "c" => "Horse");
+        extract($my_array);
+        echo "\$a = $a; \$b = $b; \$c = $c";
+        //输出：$a = Cat; $b = Dog; $c = Horse
+
+        $a = "Original";
+        $my_array = array("a" => "Cat", "b" => "Dog", "c" => "Horse");
+
+        extract($my_array, EXTR_PREFIX_SAME, "dup");
+
+        echo "\$a = $a; \$b = $b; \$c = $c; \$dup_a = $dup_a";
+        //输出：$a = Original; $b = Dog; $c = Horse; $dup_a = Cat
+
+    }
+
+    /**
+     * in_array(search,array,type)
+     * 搜索数组中是否存在指定的值。
+     * 如果 search 参数是字符串且 type 参数被设置为 TRUE，则搜索区分大小写
+     */
+    public function testInarray(){
+        $people = array("Bill", "Steve", "Mark", "David");
+
+        if (in_array("Mark", $people))
+        {
+            echo "匹配已找到";
+        }
+        else
+        {
+            echo "匹配未找到";
+        }
+        //输出：匹配已找到
+
+        $people = array("Bill", "Steve", "Mark", "David");
+
+        if (in_array("23", $people, TRUE))
+        {
+            echo "匹配已找到<br>";
+        }
+        else
+        {
+            echo "匹配未找到<br>";
+        }
+        if (in_array("Mark",$people, TRUE))
+        {
+            echo "匹配已找到<br>";
+        }
+        else
+        {
+            echo "匹配未找到<br>";
+        }
+
+        if (in_array(23,$people, TRUE))
+        {
+            echo "匹配已找到<br>";
+        }
+        else
+        {
+            echo "匹配未找到<br>";
+        }
+
+        //输出：匹配未找到
+        //匹配已找到
+        //匹配未找到
+
+    }
+
+    /**
+     * key(array)
+     * 函数返回数组内部指针当前指向元素的键名。
+     * 若发生错误，则函数返回 FALSE。
+     * 该函数与 current() 类似，只是返回的结果不同。current() 函数返回的是元素的值，而 key() 函数返回的是元素的键名。
+     */
+    public function testKey(){
+        $people = array("Bill", "Steve", "Mark", "David");
+        echo "键的当前位置是：" . key($people);
+        //输出：键的当前位置是：0
+
+    }
 
 }
