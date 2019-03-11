@@ -76,6 +76,11 @@ Route::get('testCurrent', 'FunctionController\ArrayFunctionController@testCurren
 Route::get('testExtract', 'FunctionController\ArrayFunctionController@testExtract');
 Route::get('testInarray', 'FunctionController\ArrayFunctionController@testInarray');
 Route::get('testKey', 'FunctionController\ArrayFunctionController@testKey');
+Route::get('testNatsort', 'FunctionController\ArrayFunctionController@testNatsort');
+Route::get('testNext', 'FunctionController\ArrayFunctionController@testNext');
+Route::get('testPos', 'FunctionController\ArrayFunctionController@testPos');
+Route::get('testPrev', 'FunctionController\ArrayFunctionController@testPrev');
+
 
 
 

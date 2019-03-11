@@ -985,4 +985,72 @@ class ArrayFunctionController extends Controller
 
     }
 
+    //2019-03-11
+    /**
+     * natsort(array)
+     * natsort() 函数用"自然排序"算法对数组进行排序。键值保留它们原始的键名。
+     * 在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 "10" 中的第一个数字小于 2。
+     */
+    public function testNatsort(){
+        $temp_files = array("temp15.txt","temp10.txt",
+            "temp1.txt","temp22.txt","temp2.txt");
+
+        sort($temp_files);
+        echo "标准排序：";
+        print_r($temp_files);
+        echo "<br>";
+
+        natsort($temp_files);
+        echo "自然排序：";
+        print_r($temp_files);
+        //输出：
+        //标准排序：Array ( [0] => temp1.txt [1] => temp10.txt [2] => temp15.txt [3] => temp2.txt [4] => temp22.txt )
+        //自然排序：Array ( [0] => temp1.txt [3] => temp2.txt [1] => temp10.txt [2] => temp15.txt [4] => temp22.txt )
+    }
+
+    /**
+     * next() 函数将内部指针指向数组中的下一个元素，并输出。
+     */
+    public function testNext(){
+        $arr = ['a', 'b', 'c'];
+        echo "当前：".current($arr);
+        echo "<br/>";
+        echo "下一个".next($arr);
+        //输出：
+        //当前：a
+        //下一个b
+    }
+
+    /**
+     * pos(array)
+     * pos() 函数返回数组中的当前元素的值,该函数是 current() 函数的别名
+     * 提示：该函数不会移动数组内部指针。
+     */
+    public function testPos(){
+        $arr = ['a', 'b', 'c'];
+        echo "当前：".pos($arr);
+        echo "<br/>";
+        echo "下一个".next($arr);
+        echo "<br/>";
+        echo "当前：".pos($arr);
+        //输出：
+        //当前：a
+        //下一个b
+        //当前：b
+    }
+
+    /**
+     * prev() 函数将内部指针指向数组中的上一个元素，并输出
+     */
+    public function testPrev(){
+        $people = array("Bill", "Steve", "Mark", "David");
+
+        echo current($people) . "<br>";
+        echo next($people) . "<br>";
+        echo prev($people);
+        //输出：
+        //Bill
+        //Steve
+        //Bill
+    }
 }
