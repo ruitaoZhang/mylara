@@ -986,7 +986,6 @@ class ArrayFunctionController extends Controller
     }
 
     //2019-03-11
-
     /**
      * list(var1,var2...)
      * ist() 函数用于在一次操作中给一组变量赋值
@@ -1013,9 +1012,10 @@ class ArrayFunctionController extends Controller
         该函数不区分大小写。
         如果成功，该函数返回 TRUE，如果失败则返回 FALSE。
      */
-    public function testNatcasesort(){
-        $temp_files = array("temp15.txt","Temp10.txt",
-            "temp1.txt","Temp22.txt","temp2.txt");
+    public function testNatcasesort()
+    {
+        $temp_files = array("temp15.txt", "Temp10.txt",
+            "temp1.txt", "Temp22.txt", "temp2.txt");
 
         natsort($temp_files);
         echo "自然排序：";
@@ -1039,5 +1039,143 @@ class ArrayFunctionController extends Controller
         // [1] => Temp10.txt
         // [0] => temp15.txt
         // [3] => Temp22.txt )
+    }
+    /**
+     * natsort(array)
+     * natsort() 函数用"自然排序"算法对数组进行排序。键值保留它们原始的键名。
+     * 在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 "10" 中的第一个数字小于 2。
+     */
+    public function testNatsort(){
+        $temp_files = array("temp15.txt","temp10.txt",
+            "temp1.txt","temp22.txt","temp2.txt");
+
+        sort($temp_files);
+        echo "标准排序：";
+        print_r($temp_files);
+        echo "<br>";
+
+        natsort($temp_files);
+        echo "自然排序：";
+        print_r($temp_files);
+        //输出：
+        //标准排序：Array ( [0] => temp1.txt [1] => temp10.txt [2] => temp15.txt [3] => temp2.txt [4] => temp22.txt )
+        //自然排序：Array ( [0] => temp1.txt [3] => temp2.txt [1] => temp10.txt [2] => temp15.txt [4] => temp22.txt )
+    }
+
+    /**
+     * next() 函数将内部指针指向数组中的下一个元素，并输出。
+     */
+    public function testNext(){
+        $arr = ['a', 'b', 'c'];
+        echo "当前：".current($arr);
+        echo "<br/>";
+        echo "下一个".next($arr);
+        //输出：
+        //当前：a
+        //下一个b
+    }
+
+    /**
+     * pos(array)
+     * pos() 函数返回数组中的当前元素的值,该函数是 current() 函数的别名
+     * 提示：该函数不会移动数组内部指针。
+     */
+    public function testPos(){
+        $arr = ['a', 'b', 'c'];
+        echo "当前：".pos($arr);
+        echo "<br/>";
+        echo "下一个".next($arr);
+        echo "<br/>";
+        echo "当前：".pos($arr);
+        //输出：
+        //当前：a
+        //下一个b
+        //当前：b
+    }
+
+    /**
+     * prev() 函数将内部指针指向数组中的上一个元素，并输出
+     */
+    public function testPrev(){
+        $people = array("Bill", "Steve", "Mark", "David");
+
+        echo current($people) . "<br>";
+        echo next($people) . "<br>";
+        echo prev($people);
+        //输出：
+        //Bill
+        //Steve
+        //Bill
+    }
+
+    //2019-03-12
+    /**
+     * range(low,high,step)
+     * range() 函数创建一个包含指定范围的元素的数组。
+     * 该函数返回一个包含从 low 到 high 之间的元素的数组
+     */
+    public function testRange(){
+        $number = range(0,5);
+        print_r ($number);
+        //输出：Array ( [0] => 0 [1] => 1 [2] => 2 [3] => 3 [4] => 4 [5] => 5 )
+
+        $letter = range("a","d");
+        print_r ($letter);
+        //输出：Array ( [0] => a [1] => b [2] => c [3] => d )
+
+        $number = range(0,50,10);
+        print_r ($number);
+        //输出：Array ( [0] => 0 [1] => 10 [2] => 20 [3] => 30 [4] => 40 [5] => 50 )
+    }
+
+    /**
+     * reset() 函数将内部指针指向数组中的第一个元素，并输出
+     */
+    public function testReset(){
+        $people = array("Bill", "Steve", "Mark", "David");
+
+        echo current($people) . "<br>";
+        echo next($people) . "<br>";
+
+        echo reset($people);
+        //输出：
+        //Bill
+        //Steve
+        //Bill
+    }
+
+    /**
+     * rsort() 函数对数值数组进行降序排序。
+     * 提示：请使用 sort() 函数对数值数组进行升序排序。
+     */
+    public function testRsort(){
+        $cars=array("Volvo","BMW","Toyota");
+        rsort($cars);
+        print_r($cars);
+        //输出：Array ( [0] => Volvo [1] => Toyota [2] => BMW )
+    }
+
+    /**
+     * sort() 函数对索引数组进行升序排序。
+     * 注释：本函数为数组中的单元赋予新的键名。原有的键名将被删除。
+     */
+    public function testSort(){
+        $cars=array("Volvo","BMW","Toyota");
+        sort($cars);
+        print_r($cars);
+        //输出：Array ( [0] => BMW [1] => Toyota [2] => Volvo )
+    }
+
+    /**
+     *shuffle() 函数把数组中的元素按随机顺序重新排列
+     * 该函数为数组中的元素分配新的键名。已有键名将被删除
+     */
+    public function testShuffle(){
+        $my_array = array("red","green","blue","yellow","purple");
+
+        shuffle($my_array);
+        print_r($my_array);
+        //输出：Array ( [0] => green [1] => purple [2] => blue [3] => red [4] => yellow )
+
     }
 }

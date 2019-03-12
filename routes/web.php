@@ -78,6 +78,15 @@ Route::get('testInarray', 'FunctionController\ArrayFunctionController@testInarra
 Route::get('testKey', 'FunctionController\ArrayFunctionController@testKey');
 Route::get('testList', 'FunctionController\ArrayFunctionController@testList');
 Route::get('testNatcasesort', 'FunctionController\ArrayFunctionController@testNatcasesort');
+Route::get('testNatsort', 'FunctionController\ArrayFunctionController@testNatsort');
+Route::get('testNext', 'FunctionController\ArrayFunctionController@testNext');
+Route::get('testPos', 'FunctionController\ArrayFunctionController@testPos');
+Route::get('testPrev', 'FunctionController\ArrayFunctionController@testPrev');
+Route::get('testRange', 'FunctionController\ArrayFunctionController@testRange');
+Route::get('testReset', 'FunctionController\ArrayFunctionController@testReset');
+Route::get('testRsort', 'FunctionController\ArrayFunctionController@testRsort');
+Route::get('testSort', 'FunctionController\ArrayFunctionController@testSort');
+Route::get('testShuffle', 'FunctionController\ArrayFunctionController@testShuffle');
 
 
 
