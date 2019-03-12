@@ -985,4 +985,59 @@ class ArrayFunctionController extends Controller
 
     }
 
+    //2019-03-11
+
+    /**
+     * list(var1,var2...)
+     * ist() 函数用于在一次操作中给一组变量赋值
+     * 注释：该函数只用于数字索引的数组，且假定数字索引从 0 开始
+     */
+    public function testList(){
+        $my_array = array("Dog","Cat","Horse");
+
+        list($a, $b, $c) = $my_array;
+        echo "I have several animals, a $a, a $b and a $c.";
+        //输出：I have several animals, a Dog, a Cat and a Horse.
+
+        //使用第一个和第三个变量
+        $my_array = array("Dog","Cat","Horse");
+
+        list($a, , $c) = $my_array;
+        echo "我在这里只用了 $a 和 $c 变量。";
+        //输出：我在这里只用了 Dog 和 Horse 变量。
+    }
+
+    /**
+     * natcasesort() 函数用"自然排序"算法对数组进行排序。键值保留它们原始的键名。
+     * 在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 "10" 中的第一个数字小于 2。
+        该函数不区分大小写。
+        如果成功，该函数返回 TRUE，如果失败则返回 FALSE。
+     */
+    public function testNatcasesort(){
+        $temp_files = array("temp15.txt","Temp10.txt",
+            "temp1.txt","Temp22.txt","temp2.txt");
+
+        natsort($temp_files);
+        echo "自然排序：";
+        print_r($temp_files);
+        echo "<br />";
+        //输出：自然排序：
+        //Array (
+        // [1] => Temp10.txt
+        // [3] => Temp22.txt
+        // [2] => temp1.txt
+        // [4] => temp2.txt
+        // [0] => temp15.txt )
+
+        natcasesort($temp_files);
+        echo "不区分大小写的自然排序：";
+        print_r($temp_files);
+        //输出：不区分大小写的自然排序：
+        //Array (
+        // [2] => temp1.txt
+        // [4] => temp2.txt
+        // [1] => Temp10.txt
+        // [0] => temp15.txt
+        // [3] => Temp22.txt )
+    }
 }
