@@ -88,7 +88,12 @@ Route::get('testRsort', 'FunctionController\ArrayFunctionController@testRsort');
 Route::get('testSort', 'FunctionController\ArrayFunctionController@testSort');
 Route::get('testShuffle', 'FunctionController\ArrayFunctionController@testShuffle');
 
-
+//Date / Time 函数
+Route::get('testCheckDate', 'FunctionController\DateFuncController@testCheckDate');
+Route::get('testDateAdd', 'FunctionController\DateFuncController@testDateAdd');
+Route::get('testDateCreateFromFormat', 'FunctionController\DateFuncController@testDateCreateFromFormat');
+Route::get('testDateCreate', 'FunctionController\DateFuncController@testDateCreate');
+Route::get('testDateDateSet', 'FunctionController\DateFuncController@testDateDateSet');
 
 
 
