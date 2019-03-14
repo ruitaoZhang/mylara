@@ -94,6 +94,11 @@ Route::get('testDateAdd', 'FunctionController\DateFuncController@testDateAdd');
 Route::get('testDateCreateFromFormat', 'FunctionController\DateFuncController@testDateCreateFromFormat');
 Route::get('testDateCreate', 'FunctionController\DateFuncController@testDateCreate');
 Route::get('testDateDateSet', 'FunctionController\DateFuncController@testDateDateSet');
+Route::get('testDateDefaultTimezoneGet', 'FunctionController\DateFuncController@testDateDefaultTimezoneGet');
+Route::get('testDataDefaultTimezoneSet', 'FunctionController\DateFuncController@testDataDefaultTimezoneSet');
+Route::get('testDateDiff', 'FunctionController\DateFuncController@testDateDiff');
+Route::get('testDateFormat', 'FunctionController\DateFuncController@testDateFormat');
+Route::get('testDateGetLastErrors', 'FunctionController\DateFuncController@testDateGetLastErrors');
 
 
 
