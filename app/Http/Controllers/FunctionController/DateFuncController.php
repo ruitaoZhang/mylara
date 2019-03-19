@@ -103,4 +103,158 @@ class DateFuncController extends Controller
         echo date_format($date,"Y/m/d");
         //输出：2020/10/15
     }
+
+    //2019-03-18
+
+    /**
+     * date_isodate_set(object,year,week,day);
+     * 函数根据 ISO 8601 标准设置日期，使用周和天的偏移量（而不是使用一个具体的日期）
+     */
+    public function testDateIsodateSet(){
+        $date=date_create();
+        //设置 2019 年第 7 周的 ISO 日期：
+        date_isodate_set($date,2019,7, 2);
+        echo date_format($date,"Y-m-d");
+        //输出：2019-02-12
+    }
+
+    /**
+     * date_modify(object,modify);
+     * 函数修改时间戳
+     * object 	必需。规定由 date_create() 返回的 DateTime 对象
+     * modify 	必需。规定日期/时间字符串。
+     *
+     */
+    public function testDateModify(){
+        $date=date_create("2016-09-25");
+        date_modify($date,"+4 days");
+        echo date_format($date,"Y-m-d");
+        //输出：2016-09-29
+
+    }
+
+    /**
+     * date_offset_get(object) 函数返回时区偏移
+     * object 	必需。规定由 date_create() 返回的 DateTime 对象。
+     */
+    public function testDateOffsetGet(){
+        $winter=date_create("2016-10-15",timezone_open("America/New_York"));
+        $summer=date_create("2016-01-28",timezone_open("America/New_York"));
+
+        echo date_offset_get($winter) . " 秒。<br />";
+        echo date_offset_get($summer) . " 秒。";
+        //输出：
+        //-14400 秒。
+        //-18000 秒。
+    }
+
+    /**
+     * date_parse_from_format() 函数根据指定的格式返回包含指定日期信息的关联数组
+     */
+    public function testDateParseFromFormat(){
+        print_r(date_parse_from_format("mmddyyyy","05122013"));
+        //输出
+        //Array ( [year] => [month] => 12 [day] => 13 [hour] => [minute] => [second] => [fraction] => [warning_count] => 0 [warnings] => Array ( ) [error_count] => 1 [errors] => Array ( [8] => Data missing ) [is_localtime] => )
+    }
+
+    /**
+     * date_parse(date) 函数返回包含指定日期的详细信息的关联数组。
+     * date 	必需。规定日期（strtotime() 接受的格式）。
+     */
+    public function testDateParse(){
+        print_r(date_parse("2016-09-25 10:45:30.5"));
+        //输出：Array ( [year] => 2016 [month] => 9 [day] => 25 [hour] => 10 [minute] => 45 [second] => 30 [fraction] => 0.5 [warning_count] => 0 [warnings] => Array ( ) [error_count] => 0 [errors] => Array ( ) [is_localtime] => )
+
+    }
+
+
+    //2019-03-19
+
+    /**
+     * date_sub(object,interval);
+     * date_sub() 函数从指定日期减去日、月、年、时、分和秒。
+     * object 	必需。规定由 date_create() 返回的 DateTime 对象
+     * interval 	必需。规定 DateInterval 对象
+     */
+    public function testDateSub(){
+        $date=date_create("2016-09-29");
+        date_sub($date,date_interval_create_from_date_string("4 days"));
+        echo date_format($date,"Y-m-d");
+        //输出：2016-09-25
+    }
+
+    /**
+     * date_sun_info(timestamp,latitude,longitude);
+     * date_sun_info() 函数返回包含有关指定日期与地点的日出/日落和黄昏开始/黄昏结束的信息的数组
+     */
+    public function testDateSunInfo(){
+        $sun_info=date_sun_info(strtotime("2016-01-01"),31.2283,121.4755);
+        foreach ($sun_info as $key=>$val)
+        {
+            echo "$key: " . date("H:i:s",$val) . "<br>";
+        }
+        //输出
+        //sunrise: 06:52:34
+        //sunset: 17:01:56
+        //transit: 11:57:15
+        //civil_twilight_begin: 06:26:00
+        //civil_twilight_end: 17:28:30
+        //nautical_twilight_begin: 05:55:49
+        //nautical_twilight_end: 17:58:41
+        //astronomical_twilight_begin: 05:26:16
+        //astronomical_twilight_end: 18:28:14
+    }
+
+    /**
+     * date_sunrise(timestamp,format,latitude,longitude,zenith,gmtoffset);
+     * date_sunrise() 函数返回指定日期与地点的日出时间。
+     */
+    public function testDateSunrise(){
+        // 上海，中国：
+        // 维度：北纬 31.22 ，经度：西经 121.47
+        // 天顶 ~= 90，偏移：+8 GMT
+
+        echo("上海，中国：日期：" . date("D M d Y"));
+        echo("<br>日出时间：");
+        echo(date_sunrise(time(),SUNFUNCS_RET_STRING,31.22,121.47,90,8));
+        //输出：上海，中国：日期：Tue Mar 19 2019
+        //日出时间：06:02
+
+    }
+
+    /**
+     * date_sunset() 函数返回指定日期与地点的日落时间。
+     */
+    public function testDateSunset(){
+        // 上海，中国：
+        // 维度：北纬 31.22 ，经度：西经 121.47
+        // 天顶 ~= 90，偏移：+8 GMT
+
+        echo("上海，中国：日期：" . date("D M d Y"));
+        echo("<br>日出时间：");
+        echo(date_sunset(time(),SUNFUNCS_RET_STRING,31.22,121.47,90,8));
+        //输出：上海，中国：日期：Tue Mar 19 2019
+        //日出时间：18:01
+    }
+
+    /**
+     * date_time_set(object,hour,minute,second);
+     * date_time_set() 函数用于设置时间。
+     */
+    public function testDateTimeSet(){
+        $date=date_create("2016-09-25");
+        date_time_set($date,12,36);
+        echo date_format($date,"Y-m-d H:i:s");
+        //输出：2016-09-25 12:36:00
+    }
+
+    /**
+     * date_timestamp_get(object);
+     * 返回今天的日期和时间的 Unix 时间戳
+     */
+    public function testDateTimestampGet(){
+        $date=date_create();
+        echo date_timestamp_get($date);
+        //输出：1552998894
+    }
 }

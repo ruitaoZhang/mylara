@@ -94,6 +94,17 @@ Route::get('testDateAdd', 'FunctionController\DateFuncController@testDateAdd');
 Route::get('testDateCreateFromFormat', 'FunctionController\DateFuncController@testDateCreateFromFormat');
 Route::get('testDateCreate', 'FunctionController\DateFuncController@testDateCreate');
 Route::get('testDateDateSet', 'FunctionController\DateFuncController@testDateDateSet');
+Route::get('testDateIsodateSet', 'FunctionController\DateFuncController@testDateIsodateSet');
+Route::get('testDateModify', 'FunctionController\DateFuncController@testDateModify');
+Route::get('testDateOffsetGet', 'FunctionController\DateFuncController@testDateOffsetGet');
+Route::get('testDateParseFromFormat', 'FunctionController\DateFuncController@testDateParseFromFormat');
+Route::get('testDateParse', 'FunctionController\DateFuncController@testDateParse');
+Route::get('testDateSub', 'FunctionController\DateFuncController@testDateSub');
+Route::get('testDateSunInfo', 'FunctionController\DateFuncController@testDateSunInfo');
+Route::get('testDateSunrise', 'FunctionController\DateFuncController@testDateSunrise');
+Route::get('testDateSunset', 'FunctionController\DateFuncController@testDateSunset');
+Route::get('testDateTimeSet', 'FunctionController\DateFuncController@testDateTimeSet');
+Route::get('testDateTimestampGet', 'FunctionController\DateFuncController@testDateTimestampGet');
 
 
 
