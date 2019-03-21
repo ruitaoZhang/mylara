@@ -104,6 +104,9 @@ Route::get('testDateTimezoneGet', 'FunctionController\DateFuncController@testDat
 Route::get('testDateTimezoneSet', 'FunctionController\DateFuncController@testDateTimezoneSet');
 Route::get('testDate', 'FunctionController\DateFuncController@testDate');
 Route::get('testGetDate', 'FunctionController\DateFuncController@testGetDate');
+Route::get('testGettimeofdate', 'FunctionController\DateFuncController@testGettimeofdate');
+Route::get('testGmdate', 'FunctionController\DateFuncController@testGmdate');
+Route::get('testDateGmmktime', 'FunctionController\DateFuncController@testDateGmmktime');
 
 
 

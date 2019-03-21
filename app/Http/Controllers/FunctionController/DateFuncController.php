@@ -290,4 +290,52 @@ class DateFuncController extends Controller
         //    [month] - 月份的名称
         //    [0] - 自 Unix 纪元以来经过的秒数
     }
+
+    //2019-03-21
+
+    /**
+     * gettimeofday(return_float)
+     * gettimeofday() 函数返回当前时间
+     * return_float 	可选。当设置为 TRUE 时，返回浮点数，而不是数组。默认是 FALSE
+     * 返回值：
+        默认返回关联数组，带有如下数组键名：
+        [sec] - Unix 纪元以来的秒
+        [usec] - 微秒
+        [minuteswest] - 格林尼治以西的分
+        [dsttime] - 夏令时修正类型
+     */
+    public function testGettimeofdate(){
+        // 输出 gettimeofday() 返回的数组
+        print_r(gettimeofday());
+
+        // 输出 gettimeofday() 返回的浮点数
+        echo gettimeofday(true);
+        // 输出：Array ( [sec] => 1553144693 [usec] => 308440 [minuteswest] => -480 [dsttime] => 0 )
+        // 1553144693.3084
+    }
+
+    /**
+     * gmdate(format,timestamp);
+     * gmdate() 函数格式化 GMT/UTC 日期和时间，并返回格式化的日期字符串
+     */
+    public function testGmdate(){
+        // 输出周几
+        echo gmdate("l") . "<br>";
+
+        // 输出周几、日、月、年，时间，上午或下午
+        echo gmdate("l jS \of F Y h:i:s A");
+        //输出：Thursday
+        //Thursday 21st of March 2019 05:08:34 AM
+    }
+
+    /**
+     * gmmktime(hour,minute,second,month,day,year,is_dst);
+     * gmmktime() 函数返回 GMT 日期的 UNIX 时间戳。
+        提示：该函数与 mktime() 相同，不同的是传递的参数代表了 GMT 日期。
+     */
+    public function testDateGmmktime(){
+        //返回 GMT 日期的 UNIX 时间戳，然后使用它来查找该日期的天
+        // 输出：October 3, 1975 was on a Friday
+        echo "Oct 3, 1975 was on a ".date("l", gmmktime(0,0,0,10,3,1975));
+    }
 }
