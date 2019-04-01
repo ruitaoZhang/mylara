@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Prophecy\Exception\Doubler\MethodNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -52,6 +53,13 @@ class Handler extends ExceptionHandler
         \Log::error('错误行号：' . $exception->getLine());
         \Log::error('错误文件：' . $exception->getFile());
 
+        //捕获抛出的异常进行处理
+        if ($exception instanceof MethodNotFoundException){
+            $message = $exception->getMessage();
+//            $message = 123;
+            return response()->view('401', ["message" => $message]);
+
+        }
         return parent::render($request, $exception);
     }
 }

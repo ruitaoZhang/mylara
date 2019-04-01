@@ -20,5 +20,6 @@ Route::get('catchPageData', 'FunctionController\CurlController@catchPageData');
 Route::get('testList', 'FunctionController\FunctionController@testList');
 Route::get('testList2', 'FunctionController\FunctionController@testList2');
 Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
-Route::get('/saying', Saying::class);
+Route::get('throwExcept', 'ExceptionController@throwExcept');
+//Route::get('/saying', Saying::class);
 //Route::get('saying', 'TestController@testByeController');
