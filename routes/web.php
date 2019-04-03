@@ -106,6 +106,12 @@ Route::get('testDateSunset', 'FunctionController\DateFuncController@testDateSuns
 Route::get('testDateTimeSet', 'FunctionController\DateFuncController@testDateTimeSet');
 Route::get('testDateTimestampGet', 'FunctionController\DateFuncController@testDateTimestampGet');
 
+//String函数
+Route::get('testAddcslashes', 'FunctionController\StringFunctionController@testAddcslashes');
+Route::get('testAddslashes', 'FunctionController\StringFunctionController@testAddslashes');
+Route::get('testBin2hex', 'FunctionController\StringFunctionController@testBin2hex');
+Route::get('testChop', 'FunctionController\StringFunctionController@testChop');
+
 
 
 //Route::get('testExtract', 'FunctionController\OtherFuncController@testExtract');
