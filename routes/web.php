@@ -105,6 +105,19 @@ Route::get('testDateSunrise', 'FunctionController\DateFuncController@testDateSun
 Route::get('testDateSunset', 'FunctionController\DateFuncController@testDateSunset');
 Route::get('testDateTimeSet', 'FunctionController\DateFuncController@testDateTimeSet');
 Route::get('testDateTimestampGet', 'FunctionController\DateFuncController@testDateTimestampGet');
+Route::get('testDateDefaultTimezoneGet', 'FunctionController\DateFuncController@testDateDefaultTimezoneGet');
+Route::get('testDataDefaultTimezoneSet', 'FunctionController\DateFuncController@testDataDefaultTimezoneSet');
+Route::get('testDateDiff', 'FunctionController\DateFuncController@testDateDiff');
+Route::get('testDateFormat', 'FunctionController\DateFuncController@testDateFormat');
+Route::get('testDateGetLastErrors', 'FunctionController\DateFuncController@testDateGetLastErrors');
+Route::get('testDateTimestampSet', 'FunctionController\DateFuncController@testDateTimestampSet');
+Route::get('testDateTimezoneGet', 'FunctionController\DateFuncController@testDateTimezoneGet');
+Route::get('testDateTimezoneSet', 'FunctionController\DateFuncController@testDateTimezoneSet');
+Route::get('testDate', 'FunctionController\DateFuncController@testDate');
+Route::get('testGetDate', 'FunctionController\DateFuncController@testGetDate');
+Route::get('testGettimeofdate', 'FunctionController\DateFuncController@testGettimeofdate');
+Route::get('testGmdate', 'FunctionController\DateFuncController@testGmdate');
+Route::get('testDateGmmktime', 'FunctionController\DateFuncController@testDateGmmktime');
 
 //String函数
 Route::get('testAddcslashes', 'FunctionController\StringFunctionController@testAddcslashes');
