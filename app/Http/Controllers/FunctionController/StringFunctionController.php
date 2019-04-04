@@ -78,4 +78,96 @@ class StringFunctionController extends Controller
         echo chop($str, "world!")."<br/>";
 
     }
+
+    //2019-04-04
+
+    /**
+     * chr() 函数从指定的 ASCII 值返回字符。
+     * ASCII 值可被指定为十进制值、八进制值或十六进制值。八进制值被定义为带前置 0，而十六进制值被定义为带前置 0x
+     */
+    public function testChr(){
+        echo chr(67). "<br>"; // 十进制
+        echo chr(061) . "<br>"; // 八进制值
+        echo chr(0x61) . "<br>"; // 十六进制值
+        //输出：C
+        //1
+        //a
+    }
+
+    /**
+     * chunk_split(string,length,end)
+     *  string 	必需。规定要分割的字符串。
+        length 	可选。数字值，定义字符串块的长度。默认是 76。
+        end 	可选。字符串值，定义在每个字符串块末端放置的内容。默认是 \r\n。
+     *  函数把字符串分割为一连串更小的部分。
+     */
+    public function testChunkSplit(){
+        $str = 'iamzhangruitao';
+        echo chunk_split($str, 1);
+        echo chunk_split($str, 1, '.');
+        //输出：i.a.m.z.h.a.n.g.r.u.i.t.a.o.
+
+    }
+
+    /**
+     * convert_uudecode(string)
+     * string 	必需。规定要解码的 uuencode 编码的字符串。
+     * convert_uudecode() 函数对 uuencode 编码的字符串进行解码。
+     */
+    public function testConvertUudecode(){
+        $str = ",2&5L;&\@=V]R;&0A `";
+        echo convert_uudecode($str)."<br/>";
+        //输出：Hello world!
+
+        $str = 'i am zrt';
+        $enCodeStr = convert_uuencode($str);
+        echo $str."<br/>";
+        echo "编码后：".$enCodeStr;
+        echo "<br/>";
+        $deCodeStr = convert_uudecode($enCodeStr);
+        echo "解码后：".$deCodeStr."<br/>";
+
+    }
+
+    /**
+     * count_chars(string,mode)
+     * mode
+        可选。规定返回模式。默认是 0。以下是不同的返回模式：
+            0 - 数组，ASCII 值为键名，出现的次数为键值
+            1 - 数组，ASCII 值为键名，出现的次数为键值，只列出出现次数大于 0 的值
+            2 - 数组，ASCII 值为键名，出现的次数为键值，只列出出现次数等于 0 的值
+            3 - 字符串，带有所有使用过的不同的字符
+            4 - 字符串，带有所有未使用过的不同的字符
+     * count_chars() 函数返回字符串中所用字符的信息
+     * （例如，ASCII 字符在字符串中出现的次数，或者某个字符是否已经在字符串中使用过）。
+     */
+    public function testCountChar(){
+        $str = "hello World";
+        echo count_chars($str,3);
+        echo "<br/>";
+        //输出：Wdehlor
+
+        $str = "PHP is pretty fun!!";
+        $strArray = count_chars($str,1);
+
+        foreach ($strArray as $key=>$value){
+            echo "字符 <b>'".chr($key)."'</b> 被找到 $value 次。<br>";
+        }
+
+        //输出：
+        //字符 ' ' 被找到 3 次。
+        //字符 '!' 被找到 2 次。
+        //字符 'H' 被找到 1 次。
+        //字符 'P' 被找到 2 次。
+        //字符 'e' 被找到 1 次。
+        //字符 'f' 被找到 1 次。
+        //字符 'i' 被找到 1 次。
+        //字符 'n' 被找到 1 次。
+        //字符 'p' 被找到 1 次。
+        //字符 'r' 被找到 1 次。
+        //字符 's' 被找到 1 次。
+        //字符 't' 被找到 2 次。
+        //字符 'u' 被找到 1 次。
+        //字符 'y' 被找到 1 次。
+    }
 }
