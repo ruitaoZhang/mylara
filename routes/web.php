@@ -128,6 +128,9 @@ Route::get('testChr', 'FunctionController\StringFunctionController@testChr');
 Route::get('testChunkSplit', 'FunctionController\StringFunctionController@testChunkSplit');
 Route::get('testConvertUudecode', 'FunctionController\StringFunctionController@testConvertUudecode');
 Route::get('testCountChar', 'FunctionController\StringFunctionController@testCountChar');
+Route::get('testExplode', 'FunctionController\StringFunctionController@testExplode');
+Route::get('testFprintf', 'FunctionController\StringFunctionController@testFprintf');
+Route::get('testHex2bin', 'FunctionController\StringFunctionController@testHex2bin');
 
 
 

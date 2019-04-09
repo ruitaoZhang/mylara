@@ -170,4 +170,53 @@ class StringFunctionController extends Controller
         //字符 'u' 被找到 1 次。
         //字符 'y' 被找到 1 次。
     }
+
+    //2019-04-09
+    /**
+     * explode(separator,string,limit)
+     * explode() 函数把字符串打散为数组。
+     * separator 	必需。规定在哪里分割字符串。
+       string 	必需。要分割的字符串。
+     */
+    public function testExplode(){
+        $str = "Hello world. I love Shanghai!";
+        print_r(explode(" ", $str));
+        //输出：Array ( [0] => Hello [1] => world. [2] => I [3] => love [4] => Shanghai! )
+    }
+
+    /**
+     * fprintf(stream,format,arg1,arg2,arg++)
+     * 函数把格式化的字符串写入指定的输出流（例如：文件或数据库）
+     * format
+        %% - 返回一个百分号 %
+        %b - 二进制数
+        %c - ASCII 值对应的字符
+        %d - 包含正负号的十进制数（负数、0、正数）
+        %e - 使用小写的科学计数法（例如 1.2e+2）
+        %E - 使用大写的科学计数法（例如 1.2E+2）
+        %u - 不包含正负号的十进制数（大于等于 0）
+        %f - 浮点数（本地设置）
+        %F - 浮点数（非本地设置）
+        %g - 较短的 %e 和 %f
+        %G - 较短的 %E 和 %f
+        %o - 八进制数
+        %s - 字符串
+        %x - 十六进制数（小写字母）
+        %X - 十六进制数（大写字母）
+     */
+    public function testFprintf(){
+        $number = 9;
+        $str = "Beijing";
+        $file = fopen("testFile/1.txt","w");
+        echo fprintf($file,"There are %u million bicycles in %s.",$number,$str);
+    }
+
+    /**
+     * hex2bin() 函数把十六进制值的字符串转换为 ASCII 字符
+     */
+    public function testHex2bin(){
+        echo hex2bin("48656c6c6f20576f726c6421");
+        //输出:Hello World!
+    }
+
 }
