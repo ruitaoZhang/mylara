@@ -219,4 +219,47 @@ class StringFunctionController extends Controller
         //输出:Hello World!
     }
 
+    //2019-04-15
+
+    /**
+     * implode(separator,array)
+     * separator 	可选。规定数组元素之间放置的内容。默认是 ""（空字符串）。
+       array 	必需。要组合为字符串的数组。
+     * implode() 函数返回由数组元素组合成的字符串。
+     * join() 函数是 implode() 函数的别名。
+     */
+    public function testImplode(){
+        $arr = array('Hello','World!','I','love','Shanghai!');
+        echo implode(" ",$arr);
+        //输出：Hello World! I love Shanghai!
+
+    }
+
+    /**
+     * lcfirst(string)
+     * lcfirst() 函数把字符串中的首字符转换为小写。
+     * 相关：
+        strtolower() - 把字符串转换为小写
+        strtoupper() - 把字符串转换为大写
+        ucfirst() - 把字符串中的首字符转换为大写
+        ucwords() - 把字符串中每个单词的首字符转换为大写
+     */
+    public function testLcfirst(){
+        echo lcfirst("Hello world!");
+        //输出：hello world!
+    }
+
+    /**
+     * ltrim(string,charlist)
+     * ltrim() 函数移除字符串左侧的空白字符或其他预定义字符。
+     * 相关：
+     * rtrim() - 移除字符串右侧的空白字符或其他预定义字符
+     * trim() - 移除字符串两侧的空白字符或其他预定义字符
+     */
+    public function testLtrim(){
+        $str = "Hello World!";
+        echo $str . "<br>";
+        echo ltrim($str,"Hello");
+    }
+
 }

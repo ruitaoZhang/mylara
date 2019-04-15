@@ -131,6 +131,9 @@ Route::get('testCountChar', 'FunctionController\StringFunctionController@testCou
 Route::get('testExplode', 'FunctionController\StringFunctionController@testExplode');
 Route::get('testFprintf', 'FunctionController\StringFunctionController@testFprintf');
 Route::get('testHex2bin', 'FunctionController\StringFunctionController@testHex2bin');
+Route::get('testImplode', 'FunctionController\StringFunctionController@testImplode');
+Route::get('testLcfirst', 'FunctionController\StringFunctionController@testLcfirst');
+Route::get('testLtrim', 'FunctionController\StringFunctionController@testLtrim');
 
 
 
