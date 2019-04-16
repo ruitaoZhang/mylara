@@ -134,6 +134,9 @@ Route::get('testHex2bin', 'FunctionController\StringFunctionController@testHex2b
 Route::get('testImplode', 'FunctionController\StringFunctionController@testImplode');
 Route::get('testLcfirst', 'FunctionController\StringFunctionController@testLcfirst');
 Route::get('testLtrim', 'FunctionController\StringFunctionController@testLtrim');
+Route::get('testMd5', 'FunctionController\StringFunctionController@testMd5');
+Route::get('testNl2br', 'FunctionController\StringFunctionController@testNl2br');
+Route::get('testNumberFormat', 'FunctionController\StringFunctionController@testNumberFormat');
 
 
 

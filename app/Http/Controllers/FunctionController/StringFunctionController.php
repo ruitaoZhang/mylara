@@ -262,4 +262,66 @@ class StringFunctionController extends Controller
         echo ltrim($str,"Hello");
     }
 
+    //2019-04-16
+
+    /**
+     * md5(string,raw)
+     * string 	必需。规定要计算的字符串。
+     * raw 可选。规定十六进制或二进制输出格式：
+        TRUE - 原始 16 字符二进制格式
+        FALSE - 默认。32 字符十六进制数
+     * md5() 函数计算字符串的 MD5 散列
+     */
+    public function testMd5(){
+        $str = 'iamtao';
+        echo md5($str)."<br/>";
+        //输出：a483de86c589088791b35d8d7e6aba7a
+        $str1 = 'iamtao';
+        echo md5($str1, true)."<br/>";
+        //输出：��ކŉ���]�~j�z
+
+    }
+
+    /**
+     * nl2br(string,xhtml)
+     * string 	必需。规定要检查的字符串
+     * xhtml
+        可选。布尔值，表示是否使用兼容 XHTML 换行：
+
+        TRUE- 默认。插入 <br />
+        FALSE - 插入 <br>
+     */
+    public function testNl2br(){
+        $str = "i am zrt \n hhhhh";
+        echo nl2br($str);
+        //输出：i am zrt
+        //hhhhh
+    }
+
+    /**
+     * number_format() 函数通过千位分组来格式化数字
+     * number_format(number,decimals,decimalpoint,separator)
+     * number 必需。要格式化的数字。
+        如果未设置其他参数，则数字会被格式化为不带小数点且以逗号（,）作为千位分隔符。
+     * decimals 	可选。规定多少个小数。如果设置了该参数，则使用点号（.）作为小数点来格式化数字。
+     * decimalpoint 	可选。规定用作小数点的字符串。
+     * separator 可选。规定用作千位分隔符的字符串。仅使用该参数的第一个字符。比如 "xxx" 仅输出 "x"。
+        注释：如果设置了该参数，那么所有其他参数都是必需的
+     */
+    public function testNumberFormat(){
+        echo number_format("5000000")."<br>";
+        echo number_format("5000000",2)."<br>";
+        echo number_format("5000000",2,",",".");
+        //输出：5,000,000
+        //5,000,000.00
+        //5.000.000,00
+
+        $num = 4999.9;
+        $formattedNum = number_format($num)."<br>";
+        echo $formattedNum;
+        $formattedNum = number_format($num, 2);
+        echo $formattedNum;
+        //输出：5,000
+        //4,999.90
+    }
 }
