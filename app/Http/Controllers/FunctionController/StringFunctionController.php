@@ -324,4 +324,78 @@ class StringFunctionController extends Controller
         //输出：5,000
         //4,999.90
     }
+
+    //2019-04-18
+
+    /**
+     * ord() 函数返回字符串的首个字符的 ASCII 值
+     */
+    public function testOrd(){
+        echo ord("S")."<br>";
+        echo ord("Shanghai")."<br>";
+        //输出：83
+        //83
+    }
+
+    /**
+     * 函数把查询字符串解析到变量中
+     * parse_str(string,array)
+     * string 	必需。规定要解析的字符串
+     * array 	必需。规定存储变量的数组的名称。该参数指示变量将被存储到数组中
+     */
+    public function testParseStr(){
+        parse_str("name=Bill&age=60",$myArray);
+        print_r($myArray);
+        //输出：Array ( [name] => Bill [age] => 60 )
+    }
+
+    /**
+     * print(strings)
+     * 函数输出一个或多个字符串。
+     * 注释：print() 函数实际不是一个函数，所以您不必对它使用括号
+     * 提示：print() 函数比 echo() 稍慢
+     */
+    public function testPrint(){
+        $str = "iamzrt \n";
+        print nl2br($str);
+        $str1 = "I love Shanghai!";
+        $str2="What a nice day!";
+        print $str1 . " " . $str2;
+        //输出：iamzrt
+        //I love Shanghai! What a nice day!
+    }
+
+    /**
+     * 函数输出格式化的字符串
+     * printf(format,arg1,arg2,arg++)
+     * format 必需。规定字符串以及如何格式化其中的变量。
+     * 可能的格式值：
+        %% - 返回一个百分号 %
+        %b - 二进制数
+        %c - ASCII 值对应的字符
+        %d - 包含正负号的十进制数（负数、0、正数）
+        %e - 使用小写的科学计数法（例如 1.2e+2）
+        %E - 使用大写的科学计数法（例如 1.2E+2）
+        %u - 不包含正负号的十进制数（大于等于 0）
+        %f - 浮点数（本地设置）
+        %F - 浮点数（非本地设置）
+        %g - 较短的 %e 和 %f
+        %G - 较短的 %E 和 %f
+        %o - 八进制数
+        %s - 字符串
+        %x - 十六进制数（小写字母）
+        %X - 十六进制数（大写字母）
+        详细查看：http://www.w3school.com.cn/php/func_string_printf.asp
+     * 相关函数：sprintf()、 vprintf()、 vsprintf()、 fprintf() 和 vfprintf()
+     */
+    public function testPrintf(){
+        $num = 9;
+        $str = '广州';
+        printf("在%s有%d万辆车！", $str, $num);
+        //输出：在广州有9万辆车！
+        $number = 123;
+        printf("有两位小数：%1\$.2f<br>没有小数：%1\$u",$number);
+        //输出：有两位小数：123.00
+        //没有小数：123
+    }
 }

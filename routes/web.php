@@ -137,6 +137,10 @@ Route::get('testLtrim', 'FunctionController\StringFunctionController@testLtrim')
 Route::get('testMd5', 'FunctionController\StringFunctionController@testMd5');
 Route::get('testNl2br', 'FunctionController\StringFunctionController@testNl2br');
 Route::get('testNumberFormat', 'FunctionController\StringFunctionController@testNumberFormat');
+Route::get('testOrd', 'FunctionController\StringFunctionController@testOrd');
+Route::get('testParseStr', 'FunctionController\StringFunctionController@testParseStr');
+Route::get('testPrint', 'FunctionController\StringFunctionController@testPrint');
+Route::get('testPrintf', 'FunctionController\StringFunctionController@testPrintf');
 
 
 
