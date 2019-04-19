@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::get('catchPageData', 'FunctionController\CurlController@catchPageData');
 Route::get('testList', 'FunctionController\FunctionController@testList');
 Route::get('testList2', 'FunctionController\FunctionController@testList2');
-Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
+Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser')->name('getAdminUser');
 //Route::get('/saying', Saying::class);
 //Route::get('saying', 'TestController@testByeController');
+Route::get('testRouteFunc', 'FunctionController\LaravelBuiltInFunctionController@testRouteFunc');
+Route::get('testEach', 'FunctionController\LaravelBuiltInFunctionController@testEach');
+Route::get('testTap', 'FunctionController\LaravelBuiltInFunctionController@testTap');
+Route::get('testContains', 'FunctionController\LaravelBuiltInFunctionController@testContains');
