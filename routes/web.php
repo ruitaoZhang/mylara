@@ -22,3 +22,10 @@ Route::get('testList2', 'FunctionController\FunctionController@testList2');
 Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
 //Route::get('/saying', Saying::class);
 //Route::get('saying', 'TestController@testByeController');
+
+//练习guzzle
+Route::group(['prefix' => 'guzzle'], function (){
+    Route::get('testGet', 'Guzzle\GuzzleController@testGetRequest');
+    Route::get('getTestData', 'Guzzle\GuzzleController@getTestData')->name('getTestData');
+
+});
