@@ -26,6 +26,10 @@ Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
 //练习guzzle
 Route::group(['prefix' => 'guzzle'], function (){
     Route::get('testGet', 'Guzzle\GuzzleController@testGetRequest');
-    Route::get('getTestData', 'Guzzle\GuzzleController@getTestData')->name('getTestData');
+    Route::get('testGet1', 'Guzzle\GuzzleController@testGetRequest1');
+    Route::get('testGetSend', 'Guzzle\GuzzleController@testGetSend');
+    Route::get('testPostRequest', 'Guzzle\GuzzleController@testPostRequest');
+    Route::get('testPostRequest1', 'Guzzle\GuzzleController@testPostRequest1');
+    Route::any('getTestData', 'Guzzle\GuzzleController@getTestData')->name('getTestData');
 
 });
