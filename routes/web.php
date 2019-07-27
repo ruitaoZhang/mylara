@@ -33,3 +33,4 @@ Route::group(['prefix' => 'guzzle'], function (){
     Route::any('getTestData', 'Guzzle\GuzzleController@getTestData')->name('getTestData');
 
 });
+Route::get('userLastLogin', 'UserController@useSubSelectGetUserLastLogin');
