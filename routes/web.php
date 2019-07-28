@@ -34,3 +34,4 @@ Route::group(['prefix' => 'guzzle'], function (){
 
 });
 Route::get('userLastLogin', 'UserController@useSubSelectGetUserLastLogin');
+Route::get('createLoginRecord', 'LoginController@createLoginRecord');
