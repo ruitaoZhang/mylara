@@ -22,3 +22,6 @@ Route::get('testList2', 'FunctionController\FunctionController@testList2');
 Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
 //Route::get('/saying', Saying::class);
 //Route::get('saying', 'TestController@testByeController');
+
+Route::get('testStack', 'Controller@testStack');
+Route::get('testQueue', 'Controller@testQueue');
