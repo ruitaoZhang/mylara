@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Arithmetic\DoubleLinkedList;
 use App\Http\Controllers\Arithmetic\LinkedList;
 use App\Http\Controllers\Arithmetic\MyQueue;
 use App\Http\Controllers\Arithmetic\MyStack;
@@ -92,9 +93,35 @@ class Controller extends BaseController
         //1
         //2
         //3
-        //found
+        //found0
         //33
         //3
+    }
+    /**
+     * 测试双向链表
+     */
+    public function testDoubleLinkedList()
+    {
+        $doubleList = new DoubleLinkedList();
+
+        $doubleList->add(1);
+        $doubleList->add(2);
+        $doubleList->add(3);
+
+        $list = $doubleList->travel();
+        $length = $doubleList->length();
+        $emply = $doubleList->isEmply();
+        // 在链表尾部插入一个节点
+        $doubleList->append(33);
+        $list2 = $doubleList->travel();
+        // 指定位置插入一个节点
+        $doubleList->insert(2, 444);
+        $list3 = $doubleList->travel();
+        // 删除一个节点
+        $doubleList->remove(2);
+        $list4 = $doubleList->travel();
+
+        dd($list, $length, $emply, $list2, $list3, $list4);
     }
 
 }
