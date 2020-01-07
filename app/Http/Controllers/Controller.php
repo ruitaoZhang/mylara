@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Arithmetic\LinkedList;
 use App\Http\Controllers\Arithmetic\MyQueue;
 use App\Http\Controllers\Arithmetic\MyStack;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -39,7 +40,9 @@ class Controller extends BaseController
         print_r($stack->printArr());
     }
 
-
+    /**
+     * 测试普通队列
+     */
     public function testQueue()
     {
         $queue = new MyQueue();
@@ -66,9 +69,32 @@ class Controller extends BaseController
         print_r("<br/>");
     }
 
+    /**
+     * 测试单链表
+     */
     public function testLinkedList()
     {
+        $linkedList = new LinkedList();
 
+        $linkedList->add(1);
+        $linkedList->add(2);
+        $linkedList->add(3);
+
+        $linkedList->getAllNode();
+
+        $linkedList->del(2);
+        $linkedList->update(3, 33);
+        $linkedList->find(33);
+
+        $linkedList->getAllNode();
+
+        // 输出：
+        //1
+        //2
+        //3
+        //found
+        //33
+        //3
     }
 
 }

@@ -25,3 +25,4 @@ Route::get('getAdminUser', 'EloquentController\BaseController@getAdminUser');
 
 Route::get('testStack', 'Controller@testStack');
 Route::get('testQueue', 'Controller@testQueue');
+Route::get('testLinkedList', 'Controller@testLinkedList');
