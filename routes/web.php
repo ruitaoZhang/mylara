@@ -27,3 +27,8 @@ Route::get('testStack', 'Controller@testStack');
 Route::get('testQueue', 'Controller@testQueue');
 Route::get('testLinkedList', 'Controller@testLinkedList');
 Route::get('testDoubleLinkedList', 'Controller@testDoubleLinkedList');
+Route::get('binaryTree', 'Controller@binaryTree');
+Route::get('bubble', 'Controller@bubble');
+Route::get('select', 'Controller@select');
+Route::get('insert', 'Controller@insert');
+Route::get('quick', 'Controller@quick');

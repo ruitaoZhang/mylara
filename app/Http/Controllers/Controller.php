@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Arithmetic\BinaryTree;
 use App\Http\Controllers\Arithmetic\DoubleLinkedList;
 use App\Http\Controllers\Arithmetic\LinkedList;
 use App\Http\Controllers\Arithmetic\MyQueue;
 use App\Http\Controllers\Arithmetic\MyStack;
+use App\Http\Controllers\Arithmetic\Sort;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -122,6 +124,75 @@ class Controller extends BaseController
         $list4 = $doubleList->travel();
 
         dd($list, $length, $emply, $list2, $list3, $list4);
+    }
+
+    /**
+     * 测试二叉树
+     */
+    public function binaryTree()
+    {
+        $trees = new BinaryTree(8);
+        $trees->left =  new BinaryTree(3);
+        $trees->left->left =  new BinaryTree(1);
+        $trees->left->right = new BinaryTree(6);
+        $trees->left->right->left = new BinaryTree(4);
+        $trees->left->right->right = new BinaryTree(7);
+        $trees->right =  new BinaryTree(10);
+        $trees->right->right = new BinaryTree(14);
+        $trees->right->right->left =  new BinaryTree(13);
+        echo "<pre>";
+        $trees->preOrder();
+        // 输出：8 3 1 6 4 7 10 14 13
+        echo "<pre>";
+        $trees->inOrder();
+        echo "<pre>";
+        $trees->postOrder();
+        // 输出：1 4 7 6 3 13 14 10 8
+    }
+
+    /**
+     * 冒泡排序
+     */
+    public function bubble()
+    {
+        $arr = [1,5,3,11,10,2];
+        $sort = new Sort();
+        $arr = $sort->bubble($arr);
+        dd($arr);
+    }
+
+    /**
+     * 简单选择排序
+     */
+    public function select()
+    {
+        $arr = [1,5,3,11,10,2];
+        $sort = new Sort();
+        $arr = $sort->select($arr);
+        dd($arr);
+    }
+
+
+    /**
+     * 插入排序
+     */
+    public function insert()
+    {
+        $arr = [1,5,3,11,10,2];
+        $sort = new Sort();
+        $arr = $sort->insert($arr);
+        dd($arr);
+    }
+
+    /**
+     * 快速排序
+     */
+    public function quick()
+    {
+        $arr = [1,5,3,11,10,2];
+        $sort = new Sort();
+        $arr = $sort->quick($arr);
+        dd($arr);
     }
 
 }
